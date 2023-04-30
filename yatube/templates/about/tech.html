@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Технологии{% endblock %}
+{% block content %}
+<div class="row">
+  <h1>Вот что я умею</h1>
+  <aside class="col-12 col-md-3">
+    <ul class="list-group list-group-flush">
+      {% for tech in techs %}
+        <li class="list-group-item">
+          {{ tech }}
+      </li>
+      {% endfor %}
+    </ul>
+  </aside>
+  <article class="col-12 col-md-9">
+    <p>Для разработки сервиса использовался фреймворк <span class="text-success">Django</span> и библиотека <span class="text-info">Bootstrap</span></p>
+  </article>
+</div>
+{% endblock %}

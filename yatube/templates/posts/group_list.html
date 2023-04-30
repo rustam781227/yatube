@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-  {{ title }}
+  Записи сообщества {{group.title}}
 {% endblock %}
 {% block content %}
   <div class="container py-5">
@@ -8,8 +8,11 @@
     <p>
       {{ group.description }}
     </p>
-    {% for post in posts %}
+    {% for post in page_obj %}
       <ul>
+        <li>
+          Автор: {{ post.author.get_full_name }}
+        </li>
         <li>
           Дата публикации: {{ post.pub_date|date:"d E Y" }}
         </li>
@@ -17,6 +20,7 @@
     <p>{{ post.text }}</p>
     {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
-    <!-- под последним постом нет линии -->
+
+    {% include 'posts/includes/paginator.html' %}
   </div>
 {% endblock %}
